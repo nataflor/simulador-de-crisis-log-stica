@@ -82,8 +82,9 @@ header p {
 
 .dashboard-wrapper {
     max-width: 850px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 20px auto;
+    padding: 0 15px;
+    width: 100%;
 }
 
 .context-panel {
@@ -179,6 +180,7 @@ body.light-mode .selector-card h4 {
     border-radius: 16px;
     padding: 30px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    width: 100%;
 }
 
 body.light-mode .core-module {
@@ -215,12 +217,14 @@ body.light-mode .modulo-explicacion {
 
 .form-double-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 15px;
 }
 
 .field-item {
     flex: 1;
+    min-width: 240px;
 }
 
 .field-item label {
@@ -285,6 +289,7 @@ body.light-mode .field-item input {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 25px;
     background: #181b2a;
@@ -321,17 +326,15 @@ body.light-mode .case-study-bar {
     border-top: 2px dashed #22273e;
     margin-top: 30px;
     padding-top: 30px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .kpi-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 12px;
     margin-bottom: 8px;
-}
-
-@media(max-width: 600px) {
-    .kpi-container { grid-template-columns: repeat(2, 1fr); }
 }
 
 .kpi-card {
@@ -444,6 +447,7 @@ body.light-mode .texto-por-que {
     position: relative;
     height: 260px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .sub-table-title {
@@ -490,4 +494,45 @@ body.light-mode .sub-table th {
     padding: 40px;
     color: #475569;
     font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 25px 15px;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .titulo-creativo {
+        font-size: 1.7rem;
+    }
+    .core-module, .context-panel {
+        padding: 20px 15px;
+    }
+    .form-double-row {
+        gap: 10px;
+    }
+    .field-item {
+        min-width: 100%;
+    }
+    .form-trigger-buttons {
+        flex-direction: column;
+    }
+    .form-trigger-buttons button {
+        width: 100%;
+    }
+    .case-study-bar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    .sub-table-contenedor {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+    .sub-table th, .sub-table td {
+        padding: 8px 6px;
+        font-size: 0.75rem;
+    }
 }
