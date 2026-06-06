@@ -101,6 +101,7 @@ function evaluarSolvencia(fondos, gastoBase, shock) {
 
 
 ⚡ **3. Manipulación Dinámica del DOM (Criterio: "Manipular el DOM para mostrar resultados")**
+
 El proyecto cumple estrictamente con el control dinámico de la interfaz sin herramientas de renderizado externo, utilizando JavaScript puro:
 
 -Lectura de Datos: Captura selectiva de formularios mediante métodos de selección de nodos y conversión de tipos con parseFloat() y parseInt().
@@ -112,6 +113,7 @@ El proyecto cumple estrictamente con el control dinámico de la interfaz sin her
 
 
 🎨 **4. Maquetación y Responsividad ("Estructurar con HTML5 y diseñar con CSS responsivo")**
+
 -HTML5 Semántico: Organización jerárquica estructurada mediante etiquetas estructurales nativas (<header>, <main>, <section>, <footer>), garantizando un documento limpio y de fácil lectura para los navegadores.
 
 -CSS Grid Layout: Implementado en el menú y panel de selectores principales del Dashboard, utilizando la propiedad elástica repeat(auto-fit, minmax(...)) para lograr una adaptación bidimensional perfecta a cualquier resolución de pantalla.
