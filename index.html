@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO FINAL</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <span class="badge-top">PROYECTO FINAL</span>
+            <h1>SIMULADOR DE  <span class="neon-magenta">CRISIS LOGISTICA</span></h1>
+            <p>Simulador Predictivo de Impacto Familiar, Logística Vial y Autonomía de Suministros</p>
+            <button class="toggle-theme-btn" onclick="conmutarModoLuz()">Alternar Modo Visual</button>
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper">
+        
+        <section id="pantalla-inicio" class="context-panel">
+            <h2 class="titulo-creativo">Contexto Técnico del Desafío Nacional</h2>
+            <p>En situaciones de crisis, bloqueos de carreteras o problemas de desabastecimiento, las estaciones de servicio y las familias deben administrar cuidadosamente sus recursos para evitar el colapso. Seleccione un módulo analítico para evaluar y proyectar los datos en tiempo real.</p>
+            
+            <div class="quick-selectors">
+                <button class="selector-card" onclick="irModulo('carburantes')">
+                    <span class="sel-icon">⛽</span>
+                    <h4>Flujo de Carburantes</h4>
+                </button>
+                <button class="selector-card" onclick="irModulo('alimentos')">
+                    <span class="sel-icon">🛒</span>
+                    <h4>Canasta Alimentaria</h4>
+                </button>
+                <button class="selector-card" onclick="irModulo('transporte')">
+                    <span class="sel-icon">🚗</span>
+                    <h4>Desvíos Viales</h4>
+                </button>
+                <button class="selector-card" onclick="irModulo('presupuesto')">
+                    <span class="sel-icon">💵</span>
+                    <h4>Balance y Solvencia</h4>
+                </button>
+            </div>
+        </section>
+
+        <div id="wrapper-regresar" class="nav-back-bar hidden-element">
+            <button class="btn-back-menu" onclick="volverAlInicioGlobal()">Volver al Panel Principal</button>
+        </div>
+
+        <section id="area-carburantes" class="core-module hidden-element">
+            <div class="module-title-bar">
+                <h3>⛽ Gestión y Predicción de Reservas de Combustible</h3>
+                <p class="modulo-explicacion">Este módulo calcula cuántos días durará el combustible de una estación de servicio considerando el consumo diario de la población y el reabastecimiento que llega.</p>
+            </div>
+            
+            <div class="case-study-bar">
+                <span class="case-label">Sugerencias para probar:</span>
+                <button class="case-btn" onclick="inyectarCasoCarburantes(1)">Operación Normal</button>
+                <button class="case-btn" onclick="inyectarCasoCarburantes(2)">Bloqueo de Rutas</button>
+                <button class="case-btn" onclick="inyectarCasoCarburantes(3)">Compras de Pánico</button>
+            </div>
+
+            <h4 class="form-section-title">Usted llene sus datos manualmente:</h4>
+            <form id="form-carburantes-core" class="form-centered-layout" onsubmit="event.preventDefault();">
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Capacidad Inicial (Litros)</label>
+                        <input type="number" id="c-inicial" placeholder="Ej. 10000">
+                    </div>
+                    <div class="field-item">
+                        <label>Consumo Diario (Litros)</label>
+                        <input type="number" id="c-consumo" placeholder="Ej. 1200">
+                    </div>
+                </div>
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Reabastecimiento Diario (Litros)</label>
+                        <input type="number" id="c-reabast" placeholder="Ej. 300">
+                    </div>
+                    <div class="field-item">
+                        <label>Umbral Crítico (Litros)</label>
+                        <input type="number" id="c-critico" placeholder="Ej. 2000">
+                    </div>
+                </div>
+                <button type="button" class="btn-execute trigger-carb" onclick="calcularCarburantes()">Ejecutar Simulación de Combustible</button>
+            </form>
+
+            <div id="carb-desglose-panel" class="central-dashboard-view hidden-element">
+                <div id="carb-kpis"></div>
+                <div id="carb-tanque-visual"></div>
+                <div id="carb-progreso"></div>
+                <div id="carb-conclusion"></div>
+                
+                <h4 class="sub-table-title">Gráfico de Proyección de Pérdida de Reservas</h4>
+                <div id="carb-explicacion-grafico"></div>
+                <div class="chart-wrapper"><canvas id="chartCarb"></canvas></div>
+                
+                <div id="carb-tabla-contenedor"></div>
+                <div id="carb-historial-contenedor"></div>
+            </div>
+        </section>
+
+        <section id="area-alimentos" class="core-module hidden-element">
+            <div class="module-title-bar">
+                <h3>🛒 Análisis de Precios e Impacto Familiar</h3>
+                <p class="modulo-explicacion">Este módulo evalúa cómo la subida de precios debido a la escasez afecta al dinero disponible de una familia. Puedes evaluar desde un solo alimento o añadir hasta 10 productos en conjunto.</p>
+            </div>
+            
+            <div class="case-study-bar">
+                <span class="case-label">Sugerencias para probar:</span>
+                <button class="case-btn" onclick="inyectarEscenarioAlimentos('uno')">Caso 1: Un solo producto (Papa)</button>
+                <button class="case-btn" onclick="inyectarEscenarioAlimentos('dos')">Caso 2: Dos productos (Arroz y Aceite)</button>
+            </div>
+
+            <h4 class="form-section-title">Usted llene sus datos manualmente:</h4>
+            <form id="form-alimentos-core" class="form-centered-layout" onsubmit="event.preventDefault();">
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Ingreso Mensual del Hogar (Bs)</label>
+                        <input type="number" id="a-salario" value="2500">
+                    </div>
+                    <div class="field-item">
+                        <label>Nombre del Alimento</label>
+                        <input type="text" id="a-insumo" placeholder="Ej. Papa, Arroz, Fideo...">
+                    </div>
+                </div>
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Cantidad Mensual (Kg/Unidades)</label>
+                        <input type="number" id="a-volumen" placeholder="Ej. 5">
+                    </div>
+                    <div class="field-item">
+                        <label>Precio Anterior Regular (Bs)</label>
+                        <input type="number" id="a-ant" step="0.1" placeholder="Ej. 40">
+                    </div>
+                    <div class="field-item">
+                        <label>Precio Actual de Crisis (Bs)</label>
+                        <input type="number" id="a-act" step="0.1" placeholder="Ej. 65">
+                    </div>
+                </div>
+                <div class="form-trigger-buttons">
+                    <button type="button" class="btn-case-blue" onclick="agregarProductoAlimentos()">Añadir Alimento a la Lista</button>
+                    <button type="button" class="btn-execute trigger-ali" onclick="calcularAlimentos()">Ejecutar Simulación de la Canasta</button>
+                    <button type="button" class="btn-back-menu" style="background-color: #ef4444;" onclick="limpiarAlimentos()">🧹 Limpiar Lista</button>
+                </div>
+            </form>
+
+            <div id="ali-desglose-panel" class="central-dashboard-view hidden-element">
+                <div id="ali-kpis"></div>
+                <div id="ali-conclusion"></div>
+                
+                <h4 class="sub-table-title">Gráfico Comparativo: Gasto Total Anterior vs Gasto Total con Crisis</h4>
+                <div id="ali-explicacion-grafico"></div>
+                <div class="chart-wrapper"><canvas id="chartAli"></canvas></div>
+                
+                <div id="ali-tabla-contenedor"></div>
+            </div>
+        </section>
+
+        <section id="area-transporte" class="core-module hidden-element">
+            <div class="module-title-bar">
+                <h3>🚗 Desvíos Logísticos e Impacto Operativo Vial</h3>
+                <p class="modulo-explicacion">Este módulo analiza el gasto extra de tiempo y dinero cuando los vehículos deben tomar rutas alternativas largas debido a bloqueos, calculado para individuos o grupos grandes de personas.</p>
+            </div>
+            
+            <div class="case-study-bar">
+                <span class="case-label">Sugerencias para probar:</span>
+                <button class="case-btn" onclick="cargarEscenarioTransporte(10, 25, 2.5, 20, 40, 1)">Ruta Individual (1 Persona)</button>
+                <button class="case-btn" onclick="cargarEscenarioTransporte(15, 45, 3.0, 15, 35, 50)">Flota Colectiva (50 Personas)</button>
+            </div>
+
+            <h4 class="form-section-title">Usted llene sus datos manualmente:</h4>
+            <form id="form-transporte-core" class="form-centered-layout" onsubmit="event.preventDefault();">
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Distancia de Ruta Original (Km)</label>
+                        <input type="number" id="t-original" placeholder="Ej. 10">
+                    </div>
+                    <div class="field-item">
+                        <label>Distancia con Ruta de Desvío (Km)</label>
+                        <input type="number" id="t-desvio" placeholder="Ej. 25">
+                    </div>
+                </div>
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Costo de Combustible por Kilómetro (Bs)</label>
+                        <input type="number" id="t-costo" step="0.1" placeholder="Ej. 2.5">
+                    </div>
+                    <div class="field-item">
+                        <label>Viajes al Mes por Persona</label>
+                        <input type="number" id="t-viajes" placeholder="Ej. 20">
+                    </div>
+                    <div class="field-item">
+                        <label>Velocidad de Viaje (Km/h)</label>
+                        <input type="number" id="t-velocidad" value="40">
+                    </div>
+                </div>
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Cantidad de Personas Afectadas</label>
+                        <input type="number" id="t-personas" value="1" placeholder="Ej. 1">
+                    </div>
+                </div>
+                <button type="button" class="btn-execute trigger-trans" onclick="calcularTransporte()">Ejecutar Simulación Vial</button>
+            </form>
+
+            <div id="trans-desglose-panel" class="central-dashboard-view hidden-element">
+                <div id="trans-kpis"></div>
+                <div id="trans-mapa-svg"></div>
+                <div id="trans-conclusion"></div>
+                
+                <h4 class="sub-table-title">Gráfico de Incremento en Tiempos de Viaje (Minutos)</h4>
+                <div id="trans-explicacion-grafico"></div>
+                <div class="chart-wrapper"><canvas id="chartTrans"></canvas></div>
+                
+                <div id="trans-tabla-contenedor"></div>
+            </div>
+        </section>
+
+        <section id="area-presupuesto" class="core-module hidden-element">
+            <div class="module-title-bar">
+                <h3>💵 Capacidad de Absorción y Auditoría Presupuestaria</h3>
+                <p class="modulo-explicacion">Este módulo evalúa la salud de tu bolsillo. Compara el dinero total que tienes guardado frente a un gasto planeado, aplicando un porcentaje de inflación imprevisto para comprobar si te quedarás en deuda o saldrás ganando.</p>
+            </div>
+            
+            <div class="case-study-bar">
+                <span class="case-label">Sugerencias para probar:</span>
+                <button class="case-btn" onclick="cargarPerfilPresupuesto(1500, 1400, 20)">Gasto al Límite con Shock Alto</button>
+                <button class="case-btn" onclick="cargarPerfilPresupuesto(4000, 2000, 10)">Fondo con Buen Margen</button>
+            </div>
+
+            <h4 class="form-section-title">Usted llene sus datos manualmente:</h4>
+            <form id="form-presupuesto-core" class="form-centered-layout" onsubmit="event.preventDefault();">
+                <div class="form-double-row">
+                    <div class="field-item">
+                        <label>Tu Dinero o Presupuesto Disponible (Bs)</label>
+                        <input type="number" id="p-fondos" placeholder="Ej. 2000">
+                    </div>
+                    <div class="field-item">
+                        <label>Costo Estimado de la Compra Base (Bs)</label>
+                        <input type="number" id="p-gasto" placeholder="Ej. 1500">
+                    </div>
+                    <div class="field-item">
+                        <label>Subida de Precios por Inflación (%)</label>
+                        <input type="number" id="p-shock" value="10">
+                    </div>
+                </div>
+                <button type="button" class="btn-execute trigger-pres" onclick="calcularPresupuesto()">Ejecutar Simulación de Presupuesto</button>
+            </form>
+
+            <div id="pres-desglose-panel" class="central-dashboard-view hidden-element">
+                <div id="pres-kpis"></div>
+                <div id="pres-barra-seguridad"></div>
+                <div id="pres-conclusion"></div>
+                
+                <h4 class="sub-table-title">Gráfico de Distribución del Capital Económico</h4>
+                <div id="pres-explicacion-grafico"></div>
+                <div class="chart-wrapper" style="max-width: 280px; margin: 0 auto;"><canvas id="chartPres"></canvas></div>
+                
+                <div id="pres-tabla-contenedor"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="system-footer">
+        <p>Terminal de Control de Simulación </p>
+       
+    </footer>
+
+    <script src="java/script.js"></script>
+</body>
+</html>
