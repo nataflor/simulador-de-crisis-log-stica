@@ -3,8 +3,8 @@
 # 📊 Simulador de Crisis Logística — Proyecto Final
 
 * **Título del Proyecto:** Simulador de Crisis Logística - Dashboard Predictivo
-* **Enlace de la página web:** 
-* **Enlace del repositorio Git:** 
+* **Enlace de la página web:** https://nataflor.github.io/simulador-de-crisis-log-stica/
+* **Enlace del repositorio Git:** https://github.com/nataflor/simulador-de-crisis-log-stica
 
 ---
 
