@@ -38,7 +38,7 @@ function calcularCarburantes(inventario, consumo, reabastecimiento, umbral) {
     return { consumoNeto, dias: dias.toFixed(1), estado };
 }
 ```
-🛒 Módulo 2: Canasta Alimentaria (Análisis de Precios e Inflación)
+🛒 **Módulo 2: Canasta Alimentaria (Análisis de Precios e Inflación)**
 El Problema: Evaluar el impacto acumulativo del sobreprecio de los alimentos básicos y medir cuánta parte del ingreso mensual del hogar es absorbida por la crisis.
 
 Algoritmo Aplicado (Uso de Arreglos Globales):
@@ -60,7 +60,7 @@ function simularCanasta(ingresoMensual) {
     return { costoAnterior, costoActual, alzaInflacion: alzaInflacion.toFixed(1), porcSueldo: porcSueldo.toFixed(0) };
 }
 ```
-🚗 Módulo 3: Desvíos Viales (Optimización Logística)
+🚗 **Módulo 3: Desvíos Viales (Optimización Logística)**
 El Problema: Calcular las horas útiles de vida perdidas al mes y el impacto financiero acumulado (individual y colectivo) cuando el transporte terrestre es desviado por bloqueos viales.
 
 Algoritmo Aplicado:
@@ -78,7 +78,7 @@ function calcularDesvios(distanciaOrig, distanciaDesv, velOrig, velDesv, costoKm
 }
 ```
 
-💵 Módulo 4: Balance y Solvencia (Auditoría Presupuestaria de Shock)
+💵 **Módulo 4: Balance y Solvencia (Auditoría Presupuestaria de Shock)**
 El Problema: Someter las finanzas a un test de estrés indexando un porcentaje de shock inflacionario imprevisto a los gastos fijos para determinar la capacidad de resiliencia económica.
 
 Algoritmo Aplicado (Estructuras Condicionales Anidadas):
@@ -95,25 +95,26 @@ function evaluarSolvencia(fondos, gastoBase, shock) {
 }
 ```
 
-⚡ 3. Manipulación Dinámica del DOM (Criterio: "Manipular el DOM para mostrar resultados")
+⚡ **3. Manipulación Dinámica del DOM (Criterio: "Manipular el DOM para mostrar resultados")**
 El proyecto cumple estrictamente con el control dinámico de la interfaz sin herramientas de renderizado externo, utilizando JavaScript puro:
 
-Lectura de Datos: Captura selectiva de formularios mediante métodos de selección de nodos y conversión de tipos con parseFloat() y parseInt().
+-Lectura de Datos: Captura selectiva de formularios mediante métodos de selección de nodos y conversión de tipos con parseFloat() y parseInt().
 
-Renderizado de Tablas Dinámicas: Inyección asíncrona de filas HTML (<tr>, <td>) mediante propiedades innerHTML para estructurar la lista detallada de precios e historiales cronológicos.
+-Renderizado de Tablas Dinámicas: Inyección asíncrona de filas HTML (<tr>, <td>) mediante propiedades innerHTML para estructurar la lista detallada de precios e historiales cronológicos.
 
-Visualización de Datos con Librerías: Integración y control síncrono de Chart.js para renderizar gráficos de barras comparativos (Gasto Base vs Gasto con Crisis), facilitando la lectura estadística de las proyecciones.
+-Visualización de Datos con Librerías: Integración y control síncrono de Chart.js para renderizar gráficos de barras comparativos (Gasto Base vs Gasto con Crisis), facilitando la lectura estadística de las proyecciones.
 
-🎨 4. Maquetación y Responsividad (Criterio: "Estructurar con HTML5 y diseñar con CSS responsivo")
-HTML5 Semántico: Organización jerárquica estructurada mediante etiquetas estructurales nativas (<header>, <main>, <section>, <footer>), garantizando un documento limpio y de fácil lectura para los navegadores.
+🎨 **4. Maquetación y Responsividad (Criterio: "Estructurar con HTML5 y diseñar con CSS responsivo")**
+-HTML5 Semántico: Organización jerárquica estructurada mediante etiquetas estructurales nativas (<header>, <main>, <section>, <footer>), garantizando un documento limpio y de fácil lectura para los navegadores.
 
-CSS Grid Layout: Implementado en el menú y panel de selectores principales del Dashboard, utilizando la propiedad elástica repeat(auto-fit, minmax(...)) para lograr una adaptación bidimensional perfecta a cualquier resolución de pantalla.
+-CSS Grid Layout: Implementado en el menú y panel de selectores principales del Dashboard, utilizando la propiedad elástica repeat(auto-fit, minmax(...)) para lograr una adaptación bidimensional perfecta a cualquier resolución de pantalla.
 
-Flexbox Layout: Utilizado para la alineación unidimensional de los formularios de entrada de datos, las tarjetas de KPIs y las filas de reportes financieros.
+-Flexbox Layout: Utilizado para la alineación unidimensional de los formularios de entrada de datos, las tarjetas de KPIs y las filas de reportes financieros.
 
-Identidad Visual: Estética vibrante Synthwave que emplea una paleta de colores de fondo oscuros con acentos neón magenta y cyan para resaltar las métricas e indicadores de riesgo.
+-Identidad Visual: Estética vibrante Synthwave que emplea una paleta de colores de fondo oscuros con acentos neón magenta y cyan para resaltar las métricas e indicadores de riesgo.
 
 📂 5. Estructura Organizada del Repositorio
+```
 ├── index.html            # Documento raíz (Estructura general y SPA)
 ├── estilos/
 │   └── styles.css        # Hoja de estilos (Maquetación Grid/Flex, animaciones y diseño responsivo)
