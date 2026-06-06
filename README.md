@@ -38,6 +38,8 @@ function calcularCarburantes(inventario, consumo, reabastecimiento, umbral) {
     return { consumoNeto, dias: dias.toFixed(1), estado };
 }
 ```
+
+
 🛒 **Módulo 2: Canasta Alimentaria (Análisis de Precios e Inflación)**
 El Problema: Evaluar el impacto acumulativo del sobreprecio de los alimentos básicos y medir cuánta parte del ingreso mensual del hogar es absorbida por la crisis.
 
@@ -48,7 +50,6 @@ let ListaProductosAlimentosGlobal = [];
 function simularCanasta(ingresoMensual) {
     let costoAnterior = 0, costoActual = 0;
     
-    // Recorrido algorítmico del arreglo mediante forEach
     ListaProductosAlimentosGlobal.forEach(producto => {
         costoAnterior += producto.precioAnterior * producto.cantidad;
         costoActual += producto.precioActual * producto.cantidad;
@@ -60,6 +61,8 @@ function simularCanasta(ingresoMensual) {
     return { costoAnterior, costoActual, alzaInflacion: alzaInflacion.toFixed(1), porcSueldo: porcSueldo.toFixed(0) };
 }
 ```
+
+
 🚗 **Módulo 3: Desvíos Viales (Optimización Logística)**
 El Problema: Calcular las horas útiles de vida perdidas al mes y el impacto financiero acumulado (individual y colectivo) cuando el transporte terrestre es desviado por bloqueos viales.
 
@@ -78,6 +81,7 @@ function calcularDesvios(distanciaOrig, distanciaDesv, velOrig, velDesv, costoKm
 }
 ```
 
+
 💵 **Módulo 4: Balance y Solvencia (Auditoría Presupuestaria de Shock)**
 El Problema: Someter las finanzas a un test de estrés indexando un porcentaje de shock inflacionario imprevisto a los gastos fijos para determinar la capacidad de resiliencia económica.
 
@@ -95,6 +99,7 @@ function evaluarSolvencia(fondos, gastoBase, shock) {
 }
 ```
 
+
 ⚡ **3. Manipulación Dinámica del DOM (Criterio: "Manipular el DOM para mostrar resultados")**
 El proyecto cumple estrictamente con el control dinámico de la interfaz sin herramientas de renderizado externo, utilizando JavaScript puro:
 
@@ -104,7 +109,9 @@ El proyecto cumple estrictamente con el control dinámico de la interfaz sin her
 
 -Visualización de Datos con Librerías: Integración y control síncrono de Chart.js para renderizar gráficos de barras comparativos (Gasto Base vs Gasto con Crisis), facilitando la lectura estadística de las proyecciones.
 
-🎨 **4. Maquetación y Responsividad (Criterio: "Estructurar con HTML5 y diseñar con CSS responsivo")**
+
+
+🎨 **4. Maquetación y Responsividad ("Estructurar con HTML5 y diseñar con CSS responsivo")**
 -HTML5 Semántico: Organización jerárquica estructurada mediante etiquetas estructurales nativas (<header>, <main>, <section>, <footer>), garantizando un documento limpio y de fácil lectura para los navegadores.
 
 -CSS Grid Layout: Implementado en el menú y panel de selectores principales del Dashboard, utilizando la propiedad elástica repeat(auto-fit, minmax(...)) para lograr una adaptación bidimensional perfecta a cualquier resolución de pantalla.
